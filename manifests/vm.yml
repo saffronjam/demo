@@ -40,6 +40,7 @@ spec:
                 sudo: ALL=(ALL) NOPASSWD:ALL
                 ssh_authorized_keys:
                  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF7hmkqCiaD4nL71DriG/NBoekvwxGfO2HFvsH48P0jA emikar@STHRD-43G6KF
+                 - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC3ktpoOPJP6v79i3IyY2+vd5julRDLBrMLpCAe8d4UDH09BN9PLYRAeYbox1UcHH3G+qWuf6iIY5/oxhsZlEmCbJE1wr3rVHvutuP17mcXcdVdJlQ7QOsTqI9rUTFm8XUB83CGIC36rxada3q7ndr/RhpwUtVghYK8AT57NjUjR5PI6TayKBIqlxgzamPJPcklCWoFhMzMm/8C15J1FJTejBeLuLeC6y+jtlxUGO7WDsLRS68uzpGGiS9exDkABrnb7jSU8o6rzQpIJnipIoM75530MV3Lp7sxNEgp8psaETdyPorfPv7u1nCcQV9B3RhH3SLGqzcepwt9zXixxcniVokAYvHLzpxcRg6bSoqWvJHM97fe8hDwa36Jck6hdfSGDxVon49E1qfG4FB4JYwwX2ehnuc3zW/bP+VuwFC+Fr/9zJMXiSGKSnIQKrMWqWbUse3r7kzUCLJ3PACCjGRR74LmhPODzPv3Zc5sz5cGFzOR2bNgUEUB1NK0Cw7GaO8= emil@thinkpad
             ssh_pwauth: False
 
         name: cloudinit
