@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ubuntu
+  namespace: demo
+spec:
+  selector:
+    app.kubernetes.io/name: ubuntu
+  ports:
+  - name: nginx
+    port: 80
+    targetPort: 80
+  type: NodePort
