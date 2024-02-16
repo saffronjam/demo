@@ -1,0 +1,96 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  labels:
+    kubevirt.io/vm: vm-alpine-datavolume
+  name: alpine-datavolume
+  namespace: demo
+spec:
+  running: true
+  template:
+    metadata:
+      labels:
+        kubevirt.io/vm: alpine-datavolume
+    spec:
+      domain:
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: datavolumedisk1
+        resources:
+          requests:
+            memory: 64M
+      volumes:
+      - dataVolume:
+          name: alpine-dv
+        name: datavolumedisk1
+  dataVolumeTemplates:
+  - metadata:
+      name: alpine-dv
+    spec:
+      pvc:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 2Gi
+      source:
+        http:
+          # regsitry: regsitry.cloud.cbh.kth.se/images/ubuntu
+          url: https://dl-cdn.alpinelinux.org/alpine/v3.19/releases/x86_64/alpine-standard-3.19.0-x86_64.iso
+
+
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  labels:
+    app.kubernetes.io/deploy-name: demo
+  name: demo
+  namespace: demo
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: demo-rootdisk-dv
+      spec:
+        pvc:
+          accessModes:
+            - ReadWriteMany
+          resources:
+            requests:
+              storage: 20Gi
+          storageClassName: go-deploy-vms
+        source:
+          registry:
+            url: docker://registry.cloud.cbh.kth.se/images/ubuntu:24.04
+  running: true
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/deploy-name: demo
+      name: demo
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          disks:
+            - disk:
+                bus: virtio
+              name: rootdisk
+            - disk:
+                bus: virtio
+              name: cloudinit
+          rng: {}
+        resources:
+          requests:
+            cpu: '2'
+            memory: 4Gi
+      volumes:
+        - dataVolume:
+            name: demo-rootdisk-dv
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              fqdn: demo
+          name: cloudinit
