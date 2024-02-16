@@ -4,7 +4,7 @@ metadata:
   name: ubuntu
   namespace: demo
   labels:
-    name: ubuntu
+    app.kubernetes.io/name: ubuntu
 spec:
   runStrategy: Always
   template:

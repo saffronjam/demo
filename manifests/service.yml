@@ -5,7 +5,7 @@ metadata:
   namespace: demo
 spec:
   selector:
-    name: ubuntu
+    app.kubernetes.io/name: ubuntu
   ports:
   - name: nginx
     port: 80
