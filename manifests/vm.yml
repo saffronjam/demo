@@ -19,7 +19,7 @@ spec:
           rng: {}
         resources:
           requests:
-            cpu: 2
+            cpu: '2'
             memory: 2Gi
       terminationGracePeriodSeconds: 180
       volumes:
