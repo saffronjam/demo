@@ -5,7 +5,7 @@ metadata:
   namespace: demo
 spec:
   selector:
-    kubevirt.io: ubuntu
+    name: ubuntu
   ports:
   - name: nginx
     port: 80

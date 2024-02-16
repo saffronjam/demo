@@ -3,6 +3,8 @@ kind: VirtualMachine
 metadata:
   name: ubuntu
   namespace: demo
+  labels:
+    name: ubuntu
 spec:
   runStrategy: Always
   template:
