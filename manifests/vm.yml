@@ -2,6 +2,7 @@ apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
   name: ubuntu
+  namespace: demo
 spec:
   runStrategy: Always
   template:
