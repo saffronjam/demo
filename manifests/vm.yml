@@ -8,10 +8,10 @@ metadata:
 spec:
   runStrategy: Always
   template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: ubuntu
     spec:
-      metadata:
-        labels:
-          app.kubernetes.io/name: ubuntu
       domain:
         devices:
           disks:
